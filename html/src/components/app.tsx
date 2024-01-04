@@ -3,6 +3,7 @@ import { h, Component } from 'preact';
 import { ITerminalOptions, ITheme } from 'xterm';
 import { ClientOptions, FlowControl } from './terminal/xterm';
 import { Terminal } from './terminal';
+import { MessageReceiver } from './message_receiver';
 
 const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
 const path = window.location.pathname.replace(/[/]+$/, '');
@@ -52,14 +53,17 @@ const flowControl = {
 export class App extends Component {
     render() {
         return (
-            <Terminal
-                id="terminal-container"
-                wsUrl={wsUrl}
-                tokenUrl={tokenUrl}
-                clientOptions={clientOptions}
-                termOptions={termOptions}
-                flowControl={flowControl}
-            />
+            <div>
+                <Terminal
+                    id="terminal-container"
+                    wsUrl={wsUrl}
+                    tokenUrl={tokenUrl}
+                    clientOptions={clientOptions}
+                    termOptions={termOptions}
+                    flowControl={flowControl}
+                />
+                <MessageReceiver />
+            </div>
         );
     }
 }
