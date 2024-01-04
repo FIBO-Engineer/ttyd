@@ -10,7 +10,7 @@ export class MessageReceiver extends Component {
     }
 
     handleMessage = (event: MessageEvent) => {
-        console.log('Message received:', event.data);
+        console.log('Message received: ', event.data);
     };
 
     render() {
